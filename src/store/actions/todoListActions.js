@@ -6,6 +6,7 @@ export function completeTask(task) {
 
         completedTasks.push(task)
         dispatch(updateCompletedTaskList(completedTasks))
+        dispatch(setMessage('Task moved to archive'))
     }
 }
 

@@ -29,7 +29,6 @@ export const initialState = {
     currentTasks: currentTasks,
     completedTasks: [],
     error: null,
-    loading: true,
     message: null
 }
 
