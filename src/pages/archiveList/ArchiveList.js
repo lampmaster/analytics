@@ -4,7 +4,6 @@ import {Chart} from "../../components/Chart/Chart";
 import {connect} from "react-redux";
 import {completeTask, updateTaskList} from "../../store/actions/todoListActions";
 import {copy} from "../../utils/utils";
-import {Button} from "@material-ui/core";
 import classes from './ArchiveList.module.scss'
 import AddTaskWindow from "../../components/AddTaskWindow/AddTaskWindow";
 import moment from "moment";
