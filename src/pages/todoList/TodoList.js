@@ -38,9 +38,7 @@ export class TodoList extends Component {
     }
 
     getTasksList(task) {
-        console.log('tasks', this.props[task])
         const taskList = this.props[task].map((task, index, arr) => {
-            console.log(task);
             return (
                 <Task
                     data={task}
@@ -63,7 +61,6 @@ export class TodoList extends Component {
     delete(index) {
         const tasksList = copy(this.props.currentTasks)
         tasksList.splice(index, 1)
-        console.log('asdf', tasksList);
         this.props.updateTaskList(tasksList)
     }
 
@@ -88,11 +85,32 @@ export class TodoList extends Component {
 
     generateTasks() {
         if (this.isArchive) {
-            console.log('archive')
             return this.getTasksList('completedTasks')
         } else {
             return this.getTasksList('currentTasks')
         }
+    }
+
+    uploadHandler(file) {
+        if (file[0].type !== 'application/json') {
+            alert('Файл должен быть в формате json')
+        } else {
+            this.readFileAsync(file[0]).then((fileAsString) => {
+                console.log(JSON.parse(JSON.stringify(fileAsString)));
+            })
+        }
+
+    }
+
+    readFileAsync(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => {
+                resolve(reader.result);
+            };
+            reader.onerror = reject;
+            reader.readAsBinaryString(file);
+        });
     }
 
     render() {
@@ -106,6 +124,16 @@ export class TodoList extends Component {
             <React.Fragment>
                 {this.state.addTask ? <AddTaskWindow cancel={() => this.openCloseWindow()}/> : null}
                 <div className={classes.btn}>
+                    <Button
+                        component="label"
+                    >
+                        Upload File
+                        <input
+                            type="file"
+                            hidden
+                            onChange={(event) => this.uploadHandler(event.target.files)}
+                        />
+                    </Button>
                     <Button onClick={() => this.openCloseWindow()}>Add task</Button>
                 </div>
                 {chart}

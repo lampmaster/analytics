@@ -36,7 +36,6 @@ class AddTaskWindow extends Component {
     save() {
         const newList = copy(this.props.currentTasks)
         newList.push(this.state)
-        console.log(newList)
         this.props.updateTaskList(newList)
 
         this.props.cancel()
@@ -44,7 +43,6 @@ class AddTaskWindow extends Component {
 
 
     render() {
-        console.log(this.state)
         return (
             <div className={classes.backdrop}>
                 <div className={classes.window}>

@@ -5,7 +5,6 @@ export function completeTask(task) {
         const completedTasks = getState().completedTasks
 
         completedTasks.push(task)
-        console.log(completedTasks)
         dispatch(updateCompletedTaskList(completedTasks))
     }
 }
@@ -18,7 +17,6 @@ export function updateCompletedTaskList(completedTasks) {
 }
 
 export function updateTaskList(tasks) {
-    console.log(tasks)
     return {
         type: UPDATE_TASK_LIST,
         currentTasks: tasks

@@ -3,7 +3,6 @@ export function copy(obj) {
 }
 
 export function unixToString(unixCode) {
-    console.log(new Date(unixCode))
     const d = new Date(unixCode).getDate()
     const m = new Date(unixCode).getMonth() + 1
     const y = new Date(unixCode).getFullYear()

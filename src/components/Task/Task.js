@@ -41,7 +41,9 @@ export class Task extends Component {
     }
 
     changeEditMode() {
-        this.setState({isEdit: !this.state.isEdit})
+        if (!this.state.task.completed) {
+            this.setState({isEdit: !this.state.isEdit})
+        }
     }
 
     render() {
@@ -71,12 +73,14 @@ export class Task extends Component {
                                     : (
                                         <React.Fragment>
                                             <IconButton
+                                                disabled={this.state.task.completed}
                                                 onClick={() => this.changeEditMode()}
                                                 aria-label='edit'
                                                 className={classes.space}>
                                                 <EditIcon fontSize="small"/>
                                             </IconButton>
                                             <IconButton
+                                                disabled={this.state.task.completed}
                                                 aria-label='delete'
                                                 className={classes.space}
                                                 onClick={() => this.props.delete(this.props.index)}
