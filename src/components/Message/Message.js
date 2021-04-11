@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Snackbar from "@material-ui/core/Snackbar";
-import {clearError, clearMessage} from "../../store/actions/newsActions";
+import {clearError, clearMessage} from "../../store/actions/todoListActions";
 import {connect} from "react-redux";
 import classes from './Message.module.scss'
 
