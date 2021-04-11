@@ -12,7 +12,7 @@ export class TodoList extends Component {
         console.log(this.props.match)
 
         const chart = this.props.match.path === '/archive'
-            ? <Chart data={[5,10,1,3]} size={[200,100]}/>
+            ? <Chart data={[1,11,1,3,5,8,1]} size={[200,800]}/>
             : null
 
         return (
