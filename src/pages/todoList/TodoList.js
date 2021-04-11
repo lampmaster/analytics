@@ -7,7 +7,6 @@ import {copy} from "../../utils/utils";
 import {Button} from "@material-ui/core";
 import classes from './TodoList.module.scss'
 import AddTaskWindow from "../../components/AddTaskWindow/AddTaskWindow";
-import moment from "moment";
 
 export class TodoList extends Component {
     constructor(props) {
@@ -22,29 +21,15 @@ export class TodoList extends Component {
         return this.props.match.path === '/archive'
     }
 
-    get currentWeekTasks() {
-        const currentWeekStatistic = Array(7).fill(0)
-
-        this.props.completedTasks.forEach(task => {
-            const isSameWeek = moment(task.date).isSame(new Date(), "week")
-
-            if (isSameWeek) {
-                const dayIndex = moment(task.date).day()
-                currentWeekStatistic[dayIndex] += 1
-            }
-        })
-
-        return currentWeekStatistic
-    }
-
     getTasksList(task) {
         const taskList = this.props[task].map((task, index, arr) => {
+            const revertIndex = arr.length - 1 - index
             return (
                 <Task
-                    data={task}
-                    index={index}
-                    key={Math.random() * index * 1000}
-                    delete={() => this.delete(index)}
+                    data={arr[revertIndex]}
+                    index={revertIndex}
+                    key={revertIndex}
+                    delete={() => this.delete(revertIndex)}
                     edit={(task, index) => this.edit(task, index)}
                     complete={(index) => this.complete(index)}
                 />
