@@ -88,7 +88,7 @@ export class ArchiveList extends Component {
             <React.Fragment>
                 {this.state.addTask ? <AddTaskWindow cancel={() => this.openCloseWindow()}/> : null}
                 <div className={classes.btn}>
-                    <div>Прогресс за неделю</div>
+                    <div>Weekly progress</div>
                 </div>
                 <Chart data={this.currentWeekTasks} size={[200,800]}/>
                 {taskList}
