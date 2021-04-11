@@ -1,7 +1,9 @@
 import {initialState} from "../states/initialState";
-import {CLEAR_ERROR, CLEAR_MESSAGE, SET_MESSAGE} from "../actions/actionTypes";
+import {CLEAR_ERROR, CLEAR_MESSAGE, UPDATE_TASK_LIST, SET_MESSAGE, COMPLETE_TASK} from "../actions/actionTypes";
 
 const handlers = {
+    [UPDATE_TASK_LIST]: (state, action) => ({...state, currentTasks: action.currentTasks}),
+    [COMPLETE_TASK]: (state, action) => ({...state, completedTasks: action.completedTasks}),
     [CLEAR_ERROR]: (state) => ({...state, error: null}),
     [SET_MESSAGE]: (state, action) => ({...state, message: action.message}),
     [CLEAR_MESSAGE]: (state) => ({...state, message: null}),

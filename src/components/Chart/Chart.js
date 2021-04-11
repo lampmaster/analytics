@@ -22,7 +22,7 @@ export class Chart extends Component {
     }
 
     formatDataSet(data) {
-        const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
         return data.map((day, i) => {
             return {
                 id: i,
@@ -47,24 +47,6 @@ export class Chart extends Component {
 
         x.domain(this.data.map(item => item.day))
         y.domain([0, dataMax])
-        //
-        // const chart = chartContainer.append('chart')
-
-
-        //
-        // chart
-        //     .selectAll('rect')
-        //     .data(this.data)
-        //     .enter()
-        //     .append('rect')
-        //     .attr('width', 25)
-        //     .attr('height', 25)
-        //     .attr('fill', '#fe9922')
-        //     .attr('x', data => x(data.day))
-        //     .attr('y', data => y(data.id))
-
-
-
 
 
         select(node)
@@ -78,9 +60,6 @@ export class Chart extends Component {
             .data(this.data)
             .exit()
             .remove()
-
-
-
 
         select(node)
             .selectAll('rect')
@@ -107,14 +86,20 @@ export class Chart extends Component {
             .attr('y', this.props.size[0] + 30)
             .attr('text-anchor', 'middle')
             .classed('label', true)
+    }
 
+    get isEmpty() {
+        return this.data.every(day => day.value === 0)
     }
 
 
     render() {
 
-        console.log(this.data)
-        return <svg ref={node => this.node = node}
-                    width={this.props.size[1]} height={this.props.size[0] + 30}/>
+        if (this.isEmpty) {
+            return null
+        } else {
+            return <svg ref={node => this.node = node}
+                        width={this.props.size[1]} height={this.props.size[0] + 30}/>
+        }
     }
 }
