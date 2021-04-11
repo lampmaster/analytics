@@ -1,0 +1,26 @@
+.TopBar {
+  position: fixed;
+  top: 0;
+  height: var(--header-height);
+  width: 100vw;
+  background: #fff;
+  z-index: 2000;
+}
+
+.Container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  height: 100%;
+  width: var(--container-width);
+  font-weight: 800;
+  font-size: 23px;
+  color: var(--text-color);
+
+  .avatar {
+    position: relative;
+    width: 30px;
+    margin-right: 5px;
+    top: -3px;
+  }
+}
